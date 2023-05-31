@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cookbook Application</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .recipe-list {
+      list-style-type: none;
+    }
+    .recipe-list-item {
+      cursor: pointer;
+    }
+    .recipe-details {
+      display: none;
+    }
+    .clear-button {
+      margin-top: 20px;
+    }
+  </style>
+
+  <!-- Main JS File -->
+  <script src="main3.js"></script>
+
+</head>
+<body>
+  <h1>Cookbook Application</h1>
+
+  <h2>Add Recipe</h2>
+  <input type="text" id="recipe-title" placeholder="Recipe Title">
+  <h3>Ingredients</h3>
+  <input type="text" id="ingredient-input" placeholder="Add Ingredient">
+  <button onclick="addIngredient()">Add Ingredient</button>
+  <ul id="ingredient-list"></ul>
+
+  <h3>Instructions</h3>
+  <input type="text" id="instruction-input" placeholder="Add Instruction">
+  <button onclick="addInstruction()">Add Instruction</button>
+  <ol id="instruction-list"></ol>
+
+  <button onclick="saveRecipe()">Save Recipe</button>
+
+  <h2>Recipe List</h2>
+  <div id="recipe-list" class="recipe-list">
+    <ul></ul>
+  </div>
+  <div id="recipe-details" class="recipe-details"></div>
+  <div class="clear-button">
+    <button onclick="clearRecipeDetails()">Close Recipe</button>
+  </div>
+</body>
+</html>
