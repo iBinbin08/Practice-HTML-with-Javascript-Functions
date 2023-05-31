@@ -1,31 +1,37 @@
-var dataList = [];
+let dataList = [];
+let originalDataList = [];
 
-function displayData() {
-    var dataListElement = document.getElementById("data-list");
-    dataListElement.innerHTML = "";
-    dataList.forEach(function(text) {
-        var listItem = document.createElement("p");
-        listItem.textContent = text;
-        dataListElement.appendChild(listItem);
-    });
-}
-
-function addText() {
-    var textField = document.getElementById("input-field");
-    var text = textField.value.trim();
-    if (text != "") {
-        dataList.push(text);
-        textField.value = "";
-        displayData();
-    }
-}
-
-function sortData() {
-    dataList.sort();
-    displayData();
+function storeOriginalData() {
+  originalDataList = [...dataList]; // Create a copy of dataList
 }
 
 function unsortData() {
-    dataList.reverse();
+  dataList = [...originalDataList]; // Restore to the original data
+  displayData();
+}
+
+function displayData() {
+  const dataListElement = document.getElementById("data-list");
+  dataListElement.innerHTML = "";
+  dataList.forEach(function(text) {
+    const listItem = document.createElement("p");
+    listItem.textContent = text;
+    dataListElement.appendChild(listItem);
+  });
+}
+
+function addText() {
+  const textField = document.getElementById("input-field");
+  const text = textField.value.trim();
+  if (text !== "") {
+    dataList.push(text);
+    textField.value = "";
     displayData();
+  }
+}
+
+function sortData() {
+  storeOriginalData(); // Store the original data before sorting
+  dataList.sort();
+  displayData();
 }
